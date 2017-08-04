@@ -21,7 +21,7 @@ class DataTransformer
         }
 
         foreach ($labels as $index => $label) {
-            $set .= sprintf('%s %s %s', ($targets ? $label : $numericLabels[$label]), self::sampleRow($samples[$index]), PHP_EOL);
+            $set .= ($targets ? $label : $numericLabels[$label]) . " " . self::sampleRow($samples[$index]) . " " . PHP_EOL;
         }
 
         return $set;
@@ -40,7 +40,7 @@ class DataTransformer
 
         $set = '';
         foreach ($samples as $sample) {
-            $set .= sprintf('0 %s %s', self::sampleRow($sample), PHP_EOL);
+            $set .= "0 " . self::sampleRow($sample) . " " . PHP_EOL;
         }
 
         return $set;
@@ -93,7 +93,7 @@ class DataTransformer
     {
         $row = [];
         foreach ($sample as $index => $feature) {
-            $row[] = sprintf('%s:%s', $index + 1, $feature);
+            $row[] = $index + 1 . ":" . $feature;
         }
 
         return implode(' ', $row);
